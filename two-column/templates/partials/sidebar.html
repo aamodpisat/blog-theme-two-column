@@ -1,0 +1,64 @@
+<div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
+    <div class="well">
+        {% if recentPosts.length %}
+        <aside id="sparkling_popular_posts-2" class="widget sparkling-popular-posts">
+            <h3 class="widget-title">Recent Posts</h3>
+            <div class="popular-posts-wrapper">
+                {% for post in recentPosts %}
+                <div class="post">
+                    {% if post.featured_image %}
+                    <div class="post-image">
+                        <a href="{{post.url}}">
+                            <img src="{{getAssetUrl(post.featured_image)}}" class="attachment-tab-small size-tab-small wp-post-image">
+                        </a>
+                    </div>
+                    {% endif %}
+                    <div class="post-content">
+                        <a href="{{post.url}}">{{post.title}}</a>
+                        <span class="date">{{date(post.created_at, 'Do MMM, YYYY')}}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </aside>
+        {% endif %}
+        {% if categories.length %}
+        <aside id="sparkling-cats-2" class="widget sparkling-cats">
+            <h3 class="widget-title">Categories</h3>
+            <div class="cats-widget">
+                <ul>
+                    {% for category in categories %}
+                    <li class="cat-item cat-item-38">
+                        <a href="/blog/category/{{category.title}}" title="{{category.title}}">{{category.title}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </aside>
+        {% endif %}
+        {% if authors.length %}
+        <aside id="sparkling-cats-3" class="widget sparkling-cats">
+            <h3 class="widget-title">Authors</h3>
+            <div class="cats-widget">
+                <ul>
+                    {% for author in authors %}
+                    <li class="cat-item cat-item-38">
+                        <a href="/blog/author/{{author.title}}" title="{{author.title}}">{{author.title}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </aside>
+        {% endif %}
+        <aside id="sparkling-cats-4" class="widget sparkling-cats">
+            <h3 class="widget-title">Archieves</h3>
+            <div class="cats-widget">
+                <ul>
+                    <li class="cat-item cat-item-38">
+                        <a href="/blog/archieve/2016/08">August 2016</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
