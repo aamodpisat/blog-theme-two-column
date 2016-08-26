@@ -1,0 +1,86 @@
+{# If you have a "Content Type" for footer in Built.io Contentstack then use get() view helper to retrieve footer entry. #}
+{# e.g. set footer = get("footer_content_type_id") #}
+{# And then render footer values using the {{footer.field_name}} #}
+
+<div id="footer-area">
+    <div class="container footer-inner">
+        <div class="row">
+            <div class="footer-widget-area">
+                <div class="col-sm-4 footer-widget" role="complementary">
+                    {% if recentPosts %}
+                    <div id="sparkling_popular_posts-3" class="widget sparkling-popular-posts"><h3 class="widgettitle">Recent Posts</h3>
+                        <!-- popular posts -->
+                        <div class="popular-posts-wrapper">
+                            <!-- post -->
+                            {% for post in recentPosts %}
+                            <div class="post">
+                                <!-- image -->
+                                {% if post.featured_image %}
+                                <div class="post-image ">
+                                    <a href="{{post.url}}">
+                                        <img width="60" height="60" src="{{getAssetUrl(post.featured_image)}}" class="attachment-tab-small size-tab-small wp-post-image"
+                                             sizes="(max-width: 60px) 100vw, 60px"></a>
+
+                                </div>
+                                {% endif %}
+                                <!-- end post image -->
+                                <!-- content -->
+                                <div class="post-content">
+                                    <a href="{{post.url}}">{{post.title}}</a>
+                                    <span class="date">{{date(post.created_at, 'Do MMM, YYYY')}}</span>
+                                </div><!-- end content -->
+                            </div>
+                            {% endfor %}
+                            <!-- end post--->
+
+                        </div> <!-- end posts wrapper -->
+
+                    </div>
+                    {% endif %}
+                </div><!-- .widget-area .first -->
+
+                <div class="col-sm-4 footer-widget" role="complementary">
+                    {% if categories %}
+                    <div id="sparkling-cats-3" class="widget sparkling-cats"><h3 class="widgettitle">Categories</h3>
+                        <div class="cats-widget">
+                            <ul>
+                                {% for category in categories %}
+                                <li class="cat-item cat-item-38">
+                                    <a href="/blog/category/{{category.title}}" title="{{category.title}}">
+                                        {{category.title}}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div><!-- end widget content -->
+                    </div>
+                </div><!-- .widget-area .second -->
+                {% endif %}
+
+                <div class="col-sm-4 footer-widget" role="complementary">
+                    <div id="text-2" class="widget widget_text">
+                        <div class="textwidget">
+                            <p>Published with <a href=https://contentstack.built.io" target="_blank">Built.io Contentstack</a>.</p>
+                    </div>
+                    </div>		</div><!-- .widget-area .third -->
+            </div>			</div>
+    </div>
+
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="site-info container">
+            <div class="row">
+                <nav id="menu-social" class="social-icons">
+                    <ul id="menu-social-items" class="social-menu">
+                    </ul>
+                </nav>
+                <nav role="navigation" class="col-md-6">
+                </nav>
+                <div class="copyright col-md-6">
+                    All rights reserved. Powered by <a href=https://contentstack.built.io" target="_blank">Built.io Contentstack</a>.
+                </div>
+            </div>
+        </div><!-- .site-info -->
+        <div class="scroll-to-top" style="display: block;"><i class="fa fa-angle-up"></i></div><!-- .scroll-to-top -->
+    </footer><!-- #colophon -->
+</div>
+
